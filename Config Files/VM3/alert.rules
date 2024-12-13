@@ -1,12 +1,23 @@
 groups:
-- name: instance_down_alerts
-rules:
-- alert: InstanceDown
-expr: up{instance="192.168.119.131:9100"} == 0
-for: 1m
-labels:
-severity: critical
-annotations:
-summary: "Instance VM1 is down"
-description: "VM1 (192.168.119.131) has been unreachable for 1
-minute."
+  - name: instance_down_alerts
+    rules:
+      - alert: InstanceDown
+        expr: up{instance="192.168.119.131:9100"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Instance VM1 is down"
+          description: "VM1 (192.168.119.131) has been unreachable for 1 minute."
+
+  - name: vm1_high_cpu_alert
+    rules:
+      - alert: HighCPUUsageVM1
+        expr: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle", instanc>
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High CPU Usage on VM1"
+          description: "CPU usage on VM1 (192.168.119.131) has exceeded 95% for 1 minute>
+
