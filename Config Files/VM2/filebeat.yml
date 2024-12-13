@@ -1,0 +1,18 @@
+filebeat.config.modules:
+# Glob pattern for configuration loading
+path: ${path.config}/modules.d/*.yml
+# Set to true to enable config reloading
+reload.enabled: false
+# Period on which to check for configuration changes
+#reload.period: 10s
+filebeat.inputs:
+12
+- type: log
+enabled: true
+paths:
+- /var/log/syslog # System logs
+- /var/log/auth.log # Authentication logs
+output.logstash:
+hosts: ["192.168.119.134:5044"] # IP address of VM3 where Logstash is
+running
+#output.elasticsearch:
