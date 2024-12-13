@@ -1,0 +1,8 @@
+cluster.name: fault-tolerance
+node.name: elk-node-1
+path.data: /var/lib/elasticsearch
+path.logs: /var/log/elasticsearch
+network.host: 0.0.0.0
+http.port: 9200
+discovery.seed_hosts: ["192.168.119.134"]
+cluster.initial_master_nodes: ["elk-node-1"]
