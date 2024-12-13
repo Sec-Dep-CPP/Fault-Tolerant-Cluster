@@ -1,0 +1,11 @@
+[Unit]
+Description=Shutdown Webhook Listener
+After=network.target
+
+[Service]
+User=raul
+ExecStart=/usr/bin/python3 /home/raul/shutdown_webhook.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
