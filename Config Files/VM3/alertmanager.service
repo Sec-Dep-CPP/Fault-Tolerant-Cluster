@@ -1,0 +1,10 @@
+[Unit]
+Description=Alertmanager
+Wants=network-online.target
+After=network-online.target
+[Service]
+ExecStart=/usr/local/bin/alertmanager \
+--config.file=/home/raul/alertmanager-0.25.0.linux-amd64/alertmanager.yml
+Restart=always
+[Install]
+WantedBy=multi-user.target
